@@ -1,1 +1,53 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SENA ProjectLab IA</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>:root{--verde-sena:#39A900;--verde-oscuro:#2B7A0B;--gris-fondo:#F5F7FA;--texto:#2D3748;}*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}body{background:var(--gris-fondo);height:100vh;display:flex}.sidebar{width:290px;background:linear-gradient(180deg,var(--verde-sena),var(--verde-oscuro));color:#fff;padding:25px}.logo{text-align:center;margin-bottom:30px}.menu button{width:100%;margin:6px 0;padding:12px;border:none;border-radius:10px;background:rgba(255,255,255,.15);color:#fff}.main{flex:1;display:flex;flex-direction:column}.header{background:#fff;padding:18px 30px;border-bottom:1px solid #ddd}.header h1{color:var(--verde-sena)}.content{padding:25px;overflow:auto}.upload-section,.chat-box,.card{background:#fff;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,.05)}.upload-section{padding:25px;margin-bottom:20px}.dropzone{border:2px dashed var(--verde-sena);padding:40px;text-align:center;border-radius:15px;background:#f8fff5;cursor:pointer}.dropzone.dragover{background:#dff6d0}.dropzone button,.send-btn{background:var(--verde-sena);color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer}.file-info{display:none;margin-top:15px;padding:10px;background:#eefce6;border-radius:10px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-bottom:20px}.card{padding:20px}.chat-box{padding:20px;height:350px;overflow:auto}.message{padding:12px;border-radius:12px;margin-bottom:10px;max-width:80%}.bot{background:#E8F5E1}.input-area{display:flex;gap:10px;margin-top:12px}.input-area input{flex:1;padding:14px;border:1px solid #ccc;border-radius:10px}</style></head><body><div class="sidebar"><div class="logo"><h2>ProjectLab IA</h2><p>SENNOVA</p></div><div class="menu"><button>💡 Generar Ideas</button><button>📊 Evaluar Proyecto</button><button>📝 Formular Proyecto</button><button>🎯 ODS</button><button>🔬 SENNOVA</button></div></div><div class="main"><div class="header"><h1>SENA ProjectLab IA</h1></div><div class="content"><div class="upload-section"><h2>📄 Cargar Diseño Curricular</h2><p>Adjunte un PDF para analizar competencias y resultados de aprendizaje.</p><br><div id="dropzone" class="dropzone"><input type="file" id="pdfUpload" accept=".pdf" hidden><h3>📥 Arrastra aquí tu PDF</h3><p>o haz clic para seleccionarlo</p><br><button onclick="document.getElementById('pdfUpload').click()">Seleccionar PDF</button></div><div id="fileInfo" class="file-info"></div></div><div class="cards"><div class="card"><h3>💡 Ideación</h3><p>Generación de ideas de proyecto.</p></div><div class="card"><h3>🌎 ODS</h3><p>Alineación con objetivos sostenibles.</p></div><div class="card"><h3>🔬 SENNOVA</h3><p>Relación con líneas de investigación.</p></div></div><div class="chat-box" id="chat"><div class="message bot">Bienvenido a SENA ProjectLab IA. Cargue un diseño curricular para iniciar.</div></div><div class="input-area"><input placeholder="Escribe tu consulta..."><button class="send-btn">Enviar</button></div></div></div><script>const dz=document.getElementById('dropzone'),up=document.getElementById('pdfUpload'),info=document.getElementById('fileInfo');dz.addEventListener('click',()=>up.click());dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('dragover')});dz.addEventListener('dragleave',()=>dz.classList.remove('dragover'));dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f&&f.type==='application/pdf')showFile(f);});up.addEventListener('change',()=>{if(up.files[0])showFile(up.files[0]);});function showFile(f){info.style.display='block';info.innerHTML='<b>✅ Archivo cargado:</b><br>'+f.name+'<br>Tamaño: '+(f.size/1024/1024).toFixed(2)+' MB';document.getElementById('chat').innerHTML+='<div class="message bot">PDF recibido y listo para análisis.</div>';}</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SENA ProjectLab IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--verde-sena:#39A900;--verde-oscuro:#2B7A0B;--gris-fondo:#F5F7FA;--texto:#2D3748}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:var(--gris-fondo);height:100vh;display:flex}
+.sidebar{width:290px;background:linear-gradient(180deg,var(--verde-sena),var(--verde-oscuro));color:#fff;padding:25px}
+.logo{text-align:center;margin-bottom:30px}.menu button{width:100%;margin:6px 0;padding:12px;border:none;border-radius:10px;background:rgba(255,255,255,.15);color:#fff}
+.main{flex:1;display:flex;flex-direction:column}.header{background:#fff;padding:18px 30px;border-bottom:1px solid #ddd}.header h1{color:var(--verde-sena)}
+.content{padding:25px;overflow:auto}.upload-section,.chat-box,.card{background:#fff;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.upload-section{padding:25px;margin-bottom:20px}.dropzone{border:2px dashed var(--verde-sena);padding:40px;text-align:center;border-radius:15px;background:#f8fff5;cursor:pointer}
+.dropzone.dragover{background:#dff6d0}.dropzone button,.send-btn{background:var(--verde-sena);color:#fff;border:none;padding:12px 18px;border-radius:10px;cursor:pointer}
+.file-info{display:none;margin-top:15px;padding:10px;background:#eefce6;border-radius:10px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-bottom:20px}.card{padding:20px}
+.chat-box{padding:20px;height:350px;overflow:auto}.message{padding:12px;border-radius:12px;margin-bottom:10px;max-width:80%}.bot{background:#E8F5E1}
+.input-area{display:flex;gap:10px;margin-top:12px}.input-area input{flex:1;padding:14px;border:1px solid #ccc;border-radius:10px}
+</style>
+</head>
+<body>
+<div id="loginContainer" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#F5F7FA;display:flex;justify-content:center;align-items:center;z-index:9999;">
+<div style="background:white;padding:40px;border-radius:20px;width:380px;box-shadow:0 10px 30px rgba(0,0,0,.1);">
+<h2 style="color:#39A900;margin-bottom:20px;">ProjectLab IA</h2>
+<input type="email" id="email" placeholder="Correo electrónico" style="width:100%;padding:12px;margin-bottom:10px;border:1px solid #ccc;border-radius:8px;">
+<input type="password" id="password" placeholder="Contraseña" style="width:100%;padding:12px;margin-bottom:15px;border:1px solid #ccc;border-radius:8px;">
+<button id="loginBtn" style="width:100%;padding:12px;background:#39A900;color:white;border:none;border-radius:8px;">Iniciar Sesión</button>
+<button id="registerBtn" style="width:100%;padding:12px;margin-top:10px;background:#2563eb;color:white;border:none;border-radius:8px;">Crear Cuenta</button>
+<p id="loginMessage" style="margin-top:15px;color:red;"></p>
+</div></div>
+<div id="appContainer" style="display:none;width:100%;height:100%;display:none;">
+<div class="sidebar"><div class="logo"><h2>ProjectLab IA</h2><p>SENNOVA</p></div><div class="menu"><button>💡 Generar Ideas</button><button>📊 Evaluar Proyecto</button><button>📝 Formular Proyecto</button><button>🎯 ODS</button><button>🔬 SENNOVA</button></div></div>
+<div class="main"><div class="header"><h1>SENA ProjectLab IA</h1></div><div class="content"><div class="upload-section"><h2>📄 Cargar Diseño Curricular</h2><p>Adjunte un PDF para analizar competencias y resultados de aprendizaje.</p><br><div id="dropzone" class="dropzone"><input type="file" id="pdfUpload" accept=".pdf" hidden><h3>📥 Arrastra aquí tu PDF</h3><p>o haz clic para seleccionarlo</p><br><button onclick="document.getElementById('pdfUpload').click()">Seleccionar PDF</button></div><div id="fileInfo" class="file-info"></div></div><div class="cards"><div class="card"><h3>💡 Ideación</h3><p>Generación de ideas de proyecto.</p></div><div class="card"><h3>🌎 ODS</h3><p>Alineación con objetivos sostenibles.</p></div><div class="card"><h3>🔬 SENNOVA</h3><p>Relación con líneas de investigación.</p></div></div><div class="chat-box" id="chat"><div class="message bot">Bienvenido a SENA ProjectLab IA. Cargue un diseño curricular para iniciar.</div></div><div class="input-area"><input placeholder="Escribe tu consulta..."><button class="send-btn">Enviar</button></div></div></div></div>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js';
+import { getAnalytics } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js';
+const firebaseConfig={apiKey:'AIzaSyCYOhnisAWMYKmzvUz4XDYQpFVYzcdhuME',authDomain:'projectlab-ia.firebaseapp.com',projectId:'projectlab-ia',storageBucket:'projectlab-ia.firebasestorage.app',messagingSenderId:'860333027356',appId:'1:860333027356:web:fd9bfbcae16aded762afd9',measurementId:'G-DHHJP1VF73'};
+const app=initializeApp(firebaseConfig);getAnalytics(app);const auth=getAuth(app);
+loginBtn.onclick=async()=>{try{await signInWithEmailAndPassword(auth,email.value,password.value)}catch(e){loginMessage.innerText=e.message}};
+registerBtn.onclick=async()=>{try{await createUserWithEmailAndPassword(auth,email.value,password.value);loginMessage.innerText='Usuario creado correctamente';}catch(e){loginMessage.innerText=e.message}};
+onAuthStateChanged(auth,u=>{if(u){loginContainer.style.display='none';appContainer.style.display='flex'}else{loginContainer.style.display='flex';appContainer.style.display='none';}});
+const dz=document.getElementById('dropzone'),up=document.getElementById('pdfUpload'),info=document.getElementById('fileInfo');
+dz.addEventListener('click',()=>up.click());
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('dragover')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('dragover'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f&&f.type==='application/pdf')showFile(f);});
+up.addEventListener('change',()=>{if(up.files[0])showFile(up.files[0]);});
+function showFile(f){info.style.display='block';info.innerHTML='<b>✅ Archivo cargado:</b><br>'+f.name+'<br>Tamaño: '+(f.size/1024/1024).toFixed(2)+' MB';chat.innerHTML+='<div class="message bot">PDF recibido y listo para análisis.</div>';}
+</script>
+</body></html>
